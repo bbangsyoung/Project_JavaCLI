@@ -18,6 +18,6 @@ public class Book {
     @Override
     public String toString() {
         return "No." + number + ", 제목: " + title + ", 저자: " + author;
-        }
+    }
 
 }
