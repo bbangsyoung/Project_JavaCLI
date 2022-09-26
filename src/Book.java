@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import static java.lang.System.out;
 
 public class Book extends Admin {
     private int number;
@@ -59,18 +60,10 @@ public class Book extends Admin {
 
     @Override
     public String toString() {
-        return "\nNo." + number + ", 제목: " + title + ", 저자: " + author + ", 대여가능여부: " + status + " ";
+        return "\nNo." + this.number + ", 제목: " + this.title + ", 저자: " + this.author + ", 대여가능여부: " + this.status + " ";
     }
 
     public void mainMenu() { // 처음 메인메뉴
-
-        //책 넣어두기
-//        Book book = new Book(10, "꽃들에게 희망을", "킬리토", true);
-//        bookList.add(book);
-//        Book book1 = new Book(11, "위로의 미술관", "진병관", true);
-//        bookList.add(book1);
-//        Book book2 = new Book(12, "다정한 물리학", "해리 클리프", true);
-//        bookList.add(book2);
 
 
         System.out.println("====도서관리 프로그램====");
@@ -81,6 +74,7 @@ public class Book extends Admin {
                 "5. 도서수정(임시테스트메뉴)\n" +
                 "6. 도서삭제(임시테스트메뉴)\n" +
                 "7. 도서등록(임시테스트메뉴)\n" +
+                "8. 회원등록(임시테스트메뉴)\n" +
                 "0. 프로그램 종료");
         System.out.println("======================");
 
@@ -100,7 +94,7 @@ public class Book extends Admin {
                 break;
             case 4:
                 Admin admin = new Admin(); //관리자모드-로그인
-                admin.login();
+                admin.adminlogin();
                 break;
             case 5: //도서수정
                 bookmodify();
@@ -111,6 +105,10 @@ public class Book extends Admin {
             case 7: //도서추가
                 bookadd();
                 break;
+            case 8: //회원등록
+                Member member = new Member();
+                member.memberadd();
+                break;
             case 0:
                 System.out.println("프로그램 종료");
                 scan.close();
@@ -118,30 +116,25 @@ public class Book extends Admin {
                 System.out.println("잘못 입력하셨습니다. 다시 입력하세요.");
                 break;
         }
-
     }
 
     public void lookupBook() { //도서조회
         System.out.println("도서조회메뉴 =====");
         System.out.println("1. 모든 도서보기");
         System.out.println("2. 책 번호로 찾기");
-        System.out.println("3. 책 제목으로 찾기");
-        System.out.println("4. 저자로 찾기");
 
         Scanner scan = new Scanner(System.in);
         int u_Input = scan.nextInt();
 
         if (u_Input == 1) { //1.모든 도서보기
             System.out.println("전체 도서 목록");
-            System.out.println(bookList);
-            mainMenu();
-//            for (int i = 0; i < bookList.size(); i++) {
-//                System.out.println(bookList.get(i).getNumber());
-//                System.out.println(bookList.get(i).getTitle());
-//                System.out.println(bookList.get(i).getAuthor());
-//                System.out.println(bookList.get(i).isStatus());
-//                mainMenu();
-//            }
+            for (int i = 0; i < bookList.size(); i++) {
+                System.out.println(bookList.get(i).getNumber());
+                System.out.println(bookList.get(i).getTitle());
+                System.out.println(bookList.get(i).getAuthor());
+                System.out.println(bookList.get(i).isStatus());
+                mainMenu();
+            }
         } else if (u_Input == 2) { //2.책 번호로 찾기
             System.out.println("검색하실 책 번호를 입력해주세요 >> ");
             int u_inputs = scan.nextInt();
@@ -151,33 +144,10 @@ public class Book extends Admin {
                     System.out.println(bookList.get(i).getTitle());
                     System.out.println(bookList.get(i).getAuthor());
                     System.out.println(bookList.get(i).isStatus());
+                    break;
                 }
             }
-        } else if (u_Input == 3) { //3.책 제목으로 찾기
-            System.out.println("검색하실 책 제목을 입력해주세요 >> ");
-            scan.nextLine();
-            String u_inputs = scan.nextLine();
-            for (int i = 0; i < bookList.size(); i++) {
-                if (u_inputs.equals(bookList.get(i).getTitle())) {
-                    System.out.println(bookList.get(i).getNumber());
-                    System.out.println(bookList.get(i).getTitle());
-                    System.out.println(bookList.get(i).getAuthor());
-                    System.out.println(bookList.get(i).isStatus());
-                }
-            }
-        } else if (u_Input == 4) { //4.저자로 찾기
-            System.out.println("검색하실 저자이름을 입력해주세요 >> ");
-            scan.nextLine();
-            String u_inputs = scan.nextLine();
-            for (int i = 0; i < bookList.size(); i++) {
-                if (u_inputs.equals(bookList.get(i).getAuthor())) {
-                    System.out.println(bookList.get(i).getNumber());
-                    System.out.println(bookList.get(i).getTitle());
-                    System.out.println(bookList.get(i).getAuthor());
-                    System.out.println(bookList.get(i).isStatus());
-                }
-            }
-        } else {
+        }  else {
             System.out.println("잘못입력하셨습니다. 다시 진행해주세요.");
             lookupBook();
         }
@@ -189,24 +159,27 @@ public class Book extends Admin {
         Scanner scan = new Scanner(System.in);
         System.out.println("책 번호 입력 >>");
         book.setNumber(scan.nextInt());
+
         scan.nextLine();
+
         System.out.println("책 제목 입력 >>");
         book.setTitle(scan.nextLine());
+
         System.out.println("작가 입력 >>");
         book.setAuthor(scan.nextLine());
         book.setStatus(true);
 
-        System.out.println("도서번호 : " + book.getNumber());
-        System.out.println("도서제목 : " + book.getTitle());
-        System.out.println("작가  : " + book.getAuthor());
-        System.out.println("대여가능 : " + book.isStatus());
+        System.out.println("----------------------------");
+        System.out.println("No." + book.getNumber() + ", 제목: " + book.getTitle() + ", 작가: " + book.getAuthor());
+        System.out.println("----------------------------");
 
         System.out.println("위 내용이 맞습니까? 맞으면 1, 틀릴 시 2");
         int select = sacn.nextInt();
         if (select == 1) {
             bookList.add(book);
             System.out.println("도서등록을 완료하였습니다.");
-        }
+        } else if (select == 2)
+            System.out.println("도서등록을 실패하였습니다.");
         mainMenu();
     }
 
@@ -251,7 +224,6 @@ public class Book extends Admin {
         System.out.println("1. 도서등록");
         System.out.println("2. 도서수정");
         System.out.println("3. 도서삭제");
-
     }
 
 
@@ -286,6 +258,10 @@ public class Book extends Admin {
         } mainMenu();
 
     }
+
+
+
+
 
 
 }

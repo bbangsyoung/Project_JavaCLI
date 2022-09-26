@@ -6,9 +6,8 @@ public class Admin {
     private String adId = "admin";
     private int adPw = 1234;
 
-    void login() {
+    void adminlogin() {
         System.out.println("관리자 모드로 진입합니다====");
-
         while (true) {
             System.out.println("관리자 아이디를 입력해주세요 : ");
             String u_inputId = scan.next();
@@ -38,8 +37,4 @@ public class Admin {
         System.out.println("2. 회원 목록 수정");
         System.out.println("3. 회원 탈퇴");
     }
-
-
-
-
 }
