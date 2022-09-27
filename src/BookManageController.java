@@ -4,17 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Book extends Admin {
+public class BookManageController extends Admin {
     Scanner sacn = new Scanner(System.in);
     List<BookManageVo> bookList = new ArrayList<BookManageVo>();
 
-    public Book() {
+    public BookManageController() {
 
     } //생성자 초기화
 
-    public void mainMenu() { // 처음 메인메뉴
-
-
+    public void mainMenu() throws Exception { // 처음 메인메뉴
         System.out.println("====도서관리 프로그램====");
         System.out.println("1. 도서조회\n" +
                 "2. 도서대여/반납\n" +
@@ -28,7 +26,9 @@ public class Book extends Admin {
         System.out.println("======================");
 
         Scanner scan = new Scanner(System.in);
+
         System.out.println("메뉴를 선택해주세요 >>");
+
         int u_Input = scan.nextInt();
 
         switch (u_Input) {
@@ -67,43 +67,51 @@ public class Book extends Admin {
         }
     }
 
-    public void lookupBook() { //도서조회
-        System.out.println("도서조회메뉴 =====");
-        System.out.println("1. 모든 도서보기");
-        System.out.println("2. 책 번호로 찾기");
+    public void lookupBook() throws Exception {
+        try {
+            //도서조회
 
-        Scanner scan = new Scanner(System.in);
-        int u_Input = scan.nextInt();
+            System.out.println("도서조회메뉴 =====");
+            System.out.println("1. 모든 도서보기");
+            System.out.println("2. 책 번호로 찾기");
 
-        if (u_Input == 1) { //1.모든 도서보기
-            System.out.println("전체 도서 목록");
-            for (int i = 0; i < bookList.size(); i++) {
-                System.out.println(bookList.get(i).getNumber());
-                System.out.println(bookList.get(i).getTitle());
-                System.out.println(bookList.get(i).getAuthor());
-                System.out.println(bookList.get(i).isStatus());
-                mainMenu();
-            }
-        } else if (u_Input == 2) { //2.책 번호로 찾기
-            System.out.println("검색하실 책 번호를 입력해주세요 >> ");
-            int u_inputs = scan.nextInt();
-            for (int i = 0; i < bookList.size(); i++) {
-                if (u_inputs == bookList.get(i).getNumber()) {
-                    System.out.println(bookList.get(i).getNumber());
-                    System.out.println(bookList.get(i).getTitle());
-                    System.out.println(bookList.get(i).getAuthor());
-                    System.out.println(bookList.get(i).isStatus());
-                    break;
+            Scanner scan = new Scanner(System.in);
+            int u_Input = scan.nextInt();
+
+            if (u_Input == 1) { //1.모든 도서보기
+                System.out.println("전체 도서 목록");
+                for (int i = 0; i < bookList.size(); i++) {
+                    System.out.println(bookList.get(i).toString());
+                    //                System.out.println(bookList.get(i).getNumber());
+                    //                System.out.println(bookList.get(i).getTitle());
+                    //                System.out.println(bookList.get(i).getAuthor());
+                    //                System.out.println(bookList.get(i).isStatus());
+                    mainMenu();
                 }
+            } else if (u_Input == 2) { //2.책 번호로 찾기
+                System.out.println("검색하실 책 번호를 입력해주세요 >> ");
+                int u_inputs = scan.nextInt();
+                for (int i = 0; i < bookList.size(); i++) {
+                    if (u_inputs == bookList.get(i).getNumber()) {
+                        System.out.println(bookList.get(i).toString());
+                        //                    System.out.println(bookList.get(i).getNumber());
+                        //                    System.out.println(bookList.get(i).getTitle());
+                        //                    System.out.println(bookList.get(i).getAuthor());
+                        //                    System.out.println(bookList.get(i).isStatus());
+                        break;
+                    }
+                }
+            } else {
+                System.out.println("잘못입력하셨습니다. 다시 진행해주세요.");
+                lookupBook();
             }
-        }  else {
-            System.out.println("잘못입력하셨습니다. 다시 진행해주세요.");
-            lookupBook();
+        }catch (Exception e) {
+            e.getStackTrace();
         }
     }
 
 
-    void bookadd() { //도서등록
+    void bookadd() throws Exception{ //도서등록
         BookManageVo book = new BookManageVo();
         Scanner scan = new Scanner(System.in);
         System.out.println("책 번호 입력 >>");
@@ -132,7 +140,7 @@ public class Book extends Admin {
         mainMenu();
     }
 
-    void bookmodify() {
+    void bookmodify() throws Exception{
         System.out.println("수정할 책 번호를 입력해주세요 >> ");
         Scanner scan = new Scanner(System.in);
         int u_inputs = scan.nextInt();
@@ -152,7 +160,7 @@ public class Book extends Admin {
         }
     }
 
-    void bookdelete() {
+    void bookdelete() throws Exception{
         System.out.println("삭제할 책 번호를 입력해주세요 >> ");
         int u_inputs = scan.nextInt();
         for (int i = 0; i < bookList.size(); i++) {
@@ -167,16 +175,15 @@ public class Book extends Admin {
     }
 
 
-    void insertBook() { //도서관리
-        Book book = new Book();
+    void insertBook() throws Exception{ //도서관리
+        BookManageController book = new BookManageController();
         System.out.println("도서관리 메뉴입니다.");
         System.out.println("1. 도서등록");
         System.out.println("2. 도서수정");
         System.out.println("3. 도서삭제");
     }
 
-
-    void brBook() {
+    void brBook() throws Exception {
         System.out.println("도서 대여/반납 메뉴입니다.");
         System.out.println("해당 도서 번호를 입력해주세요");
         int u_input = scan.nextInt();
@@ -204,15 +211,10 @@ public class Book extends Admin {
                 }
                 bookList.get(i).setStatus(rental);
             }
-        } mainMenu();
+        }
+        mainMenu();
 
     }
-
-
-
-
-
-
 }
 
 

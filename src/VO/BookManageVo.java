@@ -1,4 +1,4 @@
-﻿package VO;
+package VO;
 
 public class BookManageVo {
     private int number;
@@ -39,6 +39,6 @@ public class BookManageVo {
     }
 
     public String toString() {
-        return "\nNo." + this.number + ", 제목: " + this.title + ", 저자: " + this.author + ", 대여가능여부: " + this.status + " ";
+        return " No." + this.number + ", 제목: " + this.title + ", 저자: " + this.author + ", 대여가능여부: " + this.status + " ";
     }
 }
