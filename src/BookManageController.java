@@ -13,6 +13,7 @@ public class BookManageController extends Admin {
     } //생성자 초기화
 
     public void mainMenu() throws Exception { // 처음 메인메뉴
+
         System.out.println("====도서관리 프로그램====");
         System.out.println("1. 도서조회\n" +
                 "2. 도서대여/반납\n" +
