@@ -1,67 +1,16 @@
+import VO.BookManageVo;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import static java.lang.System.out;
 
 public class Book extends Admin {
-    private int number;
-    private String title;
-    private String author;
-    private boolean status;
-
     Scanner sacn = new Scanner(System.in);
-    List<Book> bookList = new ArrayList<Book>();
+    List<BookManageVo> bookList = new ArrayList<BookManageVo>();
 
     public Book() {
+
     } //생성자 초기화
-
-    //미리 데이터 담아둘 용도
-    public Book(int setNumber, String setTitle, String setAuthor, boolean setStatus) {
-        this.number = setNumber;
-        this.title = setTitle;
-        this.author = setAuthor;
-        this.status = setStatus;
-    }
-
-
-    public int getNumber() {
-        return number;
-    }
-
-    public void setNumber(int number) {
-        this.number = number;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public boolean isStatus() {
-        return status;
-    }
-
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
-
-
-    @Override
-    public String toString() {
-        return "\nNo." + this.number + ", 제목: " + this.title + ", 저자: " + this.author + ", 대여가능여부: " + this.status + " ";
-    }
 
     public void mainMenu() { // 처음 메인메뉴
 
@@ -155,7 +104,7 @@ public class Book extends Admin {
 
 
     void bookadd() { //도서등록
-        Book book = new Book();
+        BookManageVo book = new BookManageVo();
         Scanner scan = new Scanner(System.in);
         System.out.println("책 번호 입력 >>");
         book.setNumber(scan.nextInt());
