@@ -14,27 +14,9 @@ public class Admin {
             System.out.println("패스워드를 입력해주세요 : ");
             int u_inputPw = scan.nextInt();
 
-            if (u_inputId.equals(adId) && u_inputPw == adPw) userManag();
+            if (u_inputId.equals(adId) && u_inputPw == adPw) break;
             else System.out.println("로그인실패. 다시 시도해주세요.");
         }
     }
 
-    void userManag() {
-        System.out.println("로그인성공");
-        while (true) {
-            System.out.println("1. 회원관리");
-            System.out.println("2. 도서관리");
-            System.out.println("메뉴를 선택해주세요 >>");
-            int a_input = scan.nextInt();
-            if (a_input == 1) insertUser();
-
-        }
-    }
-
-    void insertUser() { //회원관리
-        System.out.println("회원관리 메뉴입니다.");
-        System.out.println("1. 전체회원 확인");
-        System.out.println("2. 회원 목록 수정");
-        System.out.println("3. 회원 탈퇴");
-    }
 }
