@@ -8,12 +8,12 @@ public class MemberVo {
     private String id;
     private String pw;
     private String name;
-    private String bookrental;
+    private String rentalBook;  //해당 회원이 대여중인 책
 
-    private String bookrental_list;
     Scanner scan = new Scanner(System.in);
 
     List<MemberVo> memberList = new ArrayList<MemberVo>();
+
 
 
     public MemberVo() { } //기본생성자
@@ -23,7 +23,6 @@ public class MemberVo {
         this.id = id;
         this.pw = pw;
         this.name = name;
-        this.bookrental = bookrental;
     }
 
     public String getId() {
@@ -50,29 +49,18 @@ public class MemberVo {
         this.name = name;
     }
 
-    public String getbookrental() {
-        return bookrental;
+
+    public String getRentalBook() {
+        return rentalBook;
     }
 
-    public void setbookrental(String bookrental) {
-        this.bookrental = bookrental;
-    }
-
-    public String getBookrental() {
-        return bookrental;
-    }
-
-    public String getBookrental_list() {
-        return bookrental_list;
-    }
-
-    public void setBookrental_list(String bookrental_list) {
-        this.bookrental_list = bookrental_list;
+    public void setRentalBook(String rentalBook) {
+        this.rentalBook = rentalBook;
     }
 
     @Override
     public String toString() {
-        return "ID: " + this.id + "이름: " + this.name + "대여목록: " + bookrental_list;
+        return "ID: " + this.id + ", 이름: " + this.name + ", 대여목록: ";
     }
 
 

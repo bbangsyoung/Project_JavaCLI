@@ -1,7 +1,7 @@
 public class Main {
     public static void main(String[] args) {
         try {
-            Book book = new Book();
+            BookController book = new BookController();
             book.showMain();
         } catch (Exception e) {
             e.getStackTrace();

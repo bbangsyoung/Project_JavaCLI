@@ -13,49 +13,13 @@ public class Book extends Admin {
     BookVo book = new BookVo();
 
     List<BookVo> bookList = new ArrayList<BookVo>();
-
+    Member member = new Member();
     int selectNo; //메뉴선택용
 
     public Book() {
-    } //생성자 초기화
+    } //기본 생성자
 
-    public void showMain() { // 처음 메인메뉴
-        p.mainMenu();
 
-        switch (p.getInt("메뉴 입력 >>")) {
-            case 1:
-                lookupBook(); //도서조회
-                break;
-            case 2:
-                brBook(); //도서대여/반납
-                break;
-            case 3://회원등록
-                Member member = new Member();
-                member.memberAdd();
-                break;
-            case 4:
-                Admin admin = new Admin(); //관리자모드-로그인
-                admin.adminlogin();
-                break;
-            case 5: //도서수정
-                bookModify();
-                break;
-            case 6: //도서삭제
-                bookdelete();
-                break;
-            case 7: //도서추가
-                bookAdd();
-                break;
-            case 8:
-                break;
-            case 0:
-                p.print("프로그램 종료");
-                scan.close();
-            default:
-                p.print("잘못 입력하셨습니다. 다시 입력하세요.main");
-                break;
-        }
-    }
 
     public void lookupBook() { //도서조회
        p.mainMenu(1);
@@ -65,7 +29,6 @@ public class Book extends Admin {
             p.getString("［ 전체 도서 목록 ］");
             for (int i = 0; i < bookList.size(); i++) {
                 out.println(bookList.get(i).toString());
-                break;
             }
         } else if (selectNo == 2) { //2.책 번호로 찾기
             selectNo = p.getInt("검색할 책 번호 입력 >> ");
@@ -88,9 +51,9 @@ public class Book extends Admin {
         book.setAuthor(p.getString("작가 입력 >>"));
         book.setStatus(true);
 
-        p.print("――――――――――――――――――――");
+        p.print("――――――――――――――――――――\n");
         p.print("No." + book.getNumber() + ", 제목: " + book.getTitle() + ", 작가: " + book.getAuthor());
-        p.print("――――――――――――――――――――");
+        p.print("――――――――――――――――――――\n");
 
         selectNo = p.getInt("위 내용이 맞습니까? 맞으면 1, 틀리면 2");
         if (selectNo == 1) {
@@ -109,9 +72,8 @@ public class Book extends Admin {
                 bookList.get(i).setAuthor(p.getString("수정할 작가이름 입력 >> "));
                 p.print("도서수정 완료.");
             } else {
-                p.print("해당 책정보는 없습니다.");
+                p.print("해당 책 정보는 없습니다.");
             }
-            showMain();
         }
     }
 
@@ -122,13 +84,15 @@ public class Book extends Admin {
                 bookList.remove(i);
                 p.print("삭제완료");
             } else {
-                p.print("해당번호가 없어요");
+                p.print("해당 책 번호는 없습니다.");
             }
         }
-        showMain();
     }
 
     void brBook() {
+        Member member = new Member();
+
+
         p.print("도서 대여/반납 메뉴입니다.");
         selectNo = p.getInt("처리하고자 하는 도서 번호 입력 >>");
 
@@ -138,6 +102,11 @@ public class Book extends Admin {
                 if (rental) {
                     selectNo = p.getInt("대여가 가능합니다. 대여하시겠습니까? 대여1, 취소2");
                     if (selectNo == 1) {
+                        //입력한 회원이름을 member 클래스로 보내서 있는 회원인지 검증하게 하자!
+                        scan.nextLine();
+                        String inputMan = p.getString("대여하는 회원이름 검색");
+                        member.serchMember(inputMan);
+                        p.print("-----제대로 떴나?");
                         rental = false;
                         p.print("대여가 완료되었습니다.");
                     } else {
@@ -153,8 +122,10 @@ public class Book extends Admin {
                     }
                 }
                 bookList.get(i).setStatus(rental);
+            } else {
+                p.print("검색하신 번호의 책은 없습니다.");
             }
-        } showMain();
+        }
     }
 
 

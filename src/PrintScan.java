@@ -27,16 +27,16 @@ public class PrintScan {
     //메뉴 출력용 메소드
     String mainMenu() {
         //return print("――――――――――――――――――――\n [ 1. 도서관리  ]  [ 2. 회원관리  ]\n――――――――――――――――――――");
-        return print("1도서조회    2도서대여반납    3회원등록    5도서수정    6도서삭제   7도서추가   ");
+        return print("1도서조회    2도서대여반납    3회원등록    5도서수정    6도서삭제   7도서추가  8. 회원조회  \n");
     }
 
     String mainMenu(int menu) {
             //if (menu == 1) return print("［ 1：대여&반납  ］［ 2：도서조회  ］［ 3：도서등록  ］［ 4：도서수정  ］［ 5：도서삭제  ］［ 0：종료 ］");
-            if (menu == 1) return print("1전체도서조회  2책번호로 조회");
-            else if (menu == 2) return print(" ［ 1：전체회원조회 ］［ 2：회원등록 ］［ 3：회원목록수정 ］［ 4：회원탈퇴 ］［ 0：종료 ］");
-            else if (menu == 3) return print(" ［ 1：대여&반납 ］［ 2：도서조회 ］［ 3：도서등록 ］［ 4：도서수정 ］［ 5：도서삭제 ］");
-            else if (menu == 4) return print(" ［ 1：대여 ］［ 2：반납 ］");
-            else return print("잘못 누르셨습니다. 다시 눌러주세요.");
+            if (menu == 1) return print("1전체도서조회  2책번호로 조회\n");
+            else if (menu == 2) return print(" ［ 1：전체회원조회 ］［ 2：회원등록 ］［ 3：회원목록수정 ］［ 4：회원탈퇴 ］［ 0：종료 ］\n");
+            else if (menu == 3) return print(" ［ 1：대여&반납 ］［ 2：도서조회 ］［ 3：도서등록 ］［ 4：도서수정 ］［ 5：도서삭제 ］\n");
+            else if (menu == 4) return print(" ［ 1：대여 ］［ 2：반납 ］\n");
+            else return print("잘못 누르셨습니다. 다시 눌러주세요.\n");
     }
 
     String subMenu(int menu) {
