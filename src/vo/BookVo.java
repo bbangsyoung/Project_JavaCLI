@@ -1,4 +1,4 @@
-package Vo;
+package vo;
 
 public class BookVo {
     private int number;

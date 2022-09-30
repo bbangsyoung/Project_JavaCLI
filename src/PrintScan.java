@@ -44,8 +44,6 @@ public class PrintScan {
         else if (menu == 2) return print(" ［ 1：전체도서조회  ］［ 2：책번호로 조회 ］");
         else return print("잘못 누르셨습니다. 다시 눌러주세요.");
     }
-
-
 }
 
 
