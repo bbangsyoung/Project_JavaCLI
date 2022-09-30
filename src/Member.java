@@ -1,4 +1,3 @@
-import vo.MemberVo;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,25 +14,7 @@ public class  Member {
     public Member() {
     } //기본 생성자
 
-    public void memberAdd() { //회원등록
-        p.print("회원등록을 시작합니다.");
-        member.setId(p.getString("등록할 계정입력 > "));
-        member.setPw(p.getString("패스워드입력 > "));
-        member.setName(p.getString("이름 입력 > "));
-        //member.setbookrental("대여목록 없음");
 
-        p.print("――――――――――――――――――――\n");
-        p.print("ID: " + member.getId() + ", PW: " + member.getPw() + ", 이름: " + member.getName() +"\n");
-        p.print("――――――――――――――――――――\n");
-        selectNo = p.getInt("위 내용이 맞습니까? 맞으면 1, 틀릴 시 2\n");
-
-        if (selectNo == 1) {
-            memberList.add(member);
-            p.print("회원등록 완료 / 조회로 넘어간다\n");
-            book.showMain();
-        } else if (selectNo == 2)
-            p.print("회원등록 실패\n");
-    }
 
 
     public void memberLookup() { //회원조회
