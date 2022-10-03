@@ -1,14 +1,15 @@
+/*
 import vo.BookVo;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class BookController {
+public class BookController_befor {
     Scanner scan = new Scanner(System.in);
     PrintScan p = new PrintScan();
     BookVo book = new BookVo();
-    Book bookbook = new Book();
+    Book_befor bookbook = new Book_befor();
     Member member = new Member();
 
     List<BookVo> bookList = new ArrayList<BookVo>();
@@ -16,7 +17,7 @@ public class BookController {
     int selectNo; //메뉴선택용
 
 
-    BookController() {} //기본 생성자
+    BookController_befor() {} //기본 생성자
 
 
     public void showMain() { // 처음 메인메뉴
@@ -56,6 +57,5 @@ public class BookController {
                 break;
         }
     }
-
-
 }
+*/

@@ -1,10 +1,12 @@
 package util;
-import java.awt.print.Book;
+import java.util.ArrayList;
 import java.util.Scanner;
+
+import vo.Book;
 
 import static java.lang.System.out;
 
-public class BookUtil {
+public class ConsoleUtil {
 
     //도서 관련 콘솔 유틸
     public void printBookOverlap(int bookNumber) { //도서번호 중복 시
@@ -25,21 +27,21 @@ public class BookUtil {
 
 
     public void printRegistSucess(Book newBook) {
-        System.out.println("새로운 도서가 등록되었습니다.");
+        out.println("새로운 도서가 등록되었습니다.");
     }
 
 
     public void printRegistFail(Book newBook) {
-        System.out.println("도서 등록을 실패하였습니다");
+        out.println("도서 등록을 실패하였습니다");
     }
 
-    public void printBookList() {
-        System.out.println("총 " + bookList.size() + "권의 도서를 조회합니다.");
-        System.out.println("―――――――――――――――――――――――――――――");
-        System.out.println("도서등록번호 / 책 제목 / 작가 / 대여여부");
+    public void printBookList(ArrayList<Book> bookList) {
+        out.println("총 " + bookList.size() + "권의 도서를 조회합니다.");
+        out.println("―――――――――――――――――――――――――――――");
+       out.println("도서등록번호 / 책 제목 / 작가 / 대여여부");
 
             for (int i = 0; i < bookList.size(); i++) {
-                System.out.println(bookList.get(i).toString());
+               out.println(bookList.get(i).toString());
             }
         }
 
@@ -54,6 +56,22 @@ public class BookUtil {
             out.println("선택 > ");
             return sc.nextInt();
         }
+
+    public int getBook_no(String msgKind, Scanner sc) {
+        System.out.print("\n> " + msgKind + "도서 등록번호 : ");
+        return sc.nextInt();
+    }
+
+    public String getBook_name(String msgKind, Scanner sc) {
+        System.out.print("\n> " + msgKind + "도서제목 : ");
+        return sc.next();
+    }
+
+    public String book_writer(String msgKind, Scanner sc) {
+        System.out.print("\n> " + msgKind + "작가 : ");
+        return sc.next();
+    }
+
 
         public void printSearchBookCancel() {
             out.println("책 관리 화면으로 이동합니다.");
@@ -96,6 +114,9 @@ public class BookUtil {
         out.println(book_number + "번 책이 삭제되었습니다.");
     }
 
+    public void printDeleteFail(int book_number){
+        out.println(book_number + "번 책의 정보삭제가 실패하였습니다.");
+    }
 
 
 

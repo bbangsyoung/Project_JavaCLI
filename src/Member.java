@@ -1,3 +1,4 @@
+/*
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +9,7 @@ public class  Member {
     PrintScan p = new PrintScan();
     MemberVo member = new MemberVo();
     List<MemberVo> memberList = new ArrayList<MemberVo>();
-    BookController book = new BookController();
+    BookController_befor book = new BookController_befor();
 
 
     public Member() {
@@ -58,3 +59,4 @@ public class  Member {
 
 
 }//class end
+*/

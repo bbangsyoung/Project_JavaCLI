@@ -1,3 +1,4 @@
+/*
 import vo.BookVo;
 
 import java.util.ArrayList;
@@ -5,7 +6,7 @@ import java.util.List;
 import java.util.Scanner;
 import static java.lang.System.out;
 
-public class Book extends Admin {
+public class Book_befor extends Admin {
 
     Scanner scan = new Scanner(System.in);
     PrintScan p = new PrintScan();
@@ -15,7 +16,7 @@ public class Book extends Admin {
     Member member = new Member();
     int selectNo; //메뉴선택용
 
-    public Book() {
+    public Book_befor() {
     } //기본 생성자
 
 
@@ -134,3 +135,4 @@ public class Book extends Admin {
 
 
 
+*/
