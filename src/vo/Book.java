@@ -61,7 +61,7 @@ public class Book {
     }
 
     public String toString() {
-        return " No." + book_no + ", 제목: " + book_name + ", 저자: " + book_writer;
+        return " No." + book_no + "  " + book_name + "  " + book_writer;
     }
 
     public boolean book_rental() {

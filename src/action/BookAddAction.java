@@ -15,17 +15,15 @@ public class BookAddAction implements Action{
        boolean isRegisted = bookAddservice.searchBook(book_no);
 
        if(isRegisted) {
-           consoleUtil.printBookOverlap(book_no);
+           consoleUtil.printRegistedBook(book_no);
            return;
        }
 
        Book newBook = consoleUtil.getNewBook(book_no, sc);
 
        boolean isRegistBook = bookAddservice.registBook(newBook);
-
-
-
-
+       if(isRegistBook) consoleUtil.printRegistSucess(newBook);
+       else consoleUtil.printRegistFail(newBook);
 
     }
 }
