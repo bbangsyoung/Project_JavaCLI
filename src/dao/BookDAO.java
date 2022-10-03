@@ -17,7 +17,7 @@ public class BookDAO {
     public int insertBook(Book newBook) {
         int insertCount = 0;
         PreparedStatement pstmt = null;
-        String sql = "insert into book value (?,?,?);";
+        String sql = "insert into book value (?,?,?,?);";
 
 
         try {
@@ -25,6 +25,7 @@ public class BookDAO {
             pstmt.setInt(1, newBook.getBook_no());
             pstmt.setString(2, newBook.getBook_name());
             pstmt.setString(3, newBook.getBook_writer());
+            pstmt.setBoolean(4,false);
             insertCount = pstmt.executeUpdate();
 
         } catch (Exception e) {
@@ -232,14 +233,13 @@ public int deleteBook(int book_no) {
 
         int updateCount = 0;
         PreparedStatement pstmt = null;
-        String sql = "UPDATE book SET book_name=?, book_writer=?, book_rental=? WHERE book_no=?";
+        String sql = "UPDATE book SET book_name=?, book_writer=? WHERE book_no=?;";
 
         try{
             pstmt = con.prepareStatement(sql);
-
             pstmt.setString(1, changeBook.getBook_name());
             pstmt.setString(2, changeBook.getBook_writer());
-            pstmt.setBoolean(3, changeBook.book_rental());
+            pstmt.setInt(3, changeBook.getBook_no());
 
             updateCount = pstmt.executeUpdate();
         }

@@ -14,6 +14,7 @@ public class BookListAction implements Action {
 
     @Override
     public void execute(Scanner sc) throws Exception {
+        ConsoleUtil consoleUtil1 = new ConsoleUtil();
         ArrayList<Book> bookList = bookListService.getBookList();
 
         if(bookList != null) {

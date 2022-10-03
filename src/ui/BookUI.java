@@ -72,6 +72,7 @@ public class BookUI {
 
                         if(action != null) {
                             bookcontroller.requestProcess(action, sc);
+                            System.out.println("넘어가라ㅣ 넘어가");
                         }
                          } while(!isInnerStop);
                             break;

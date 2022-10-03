@@ -14,7 +14,7 @@ public class BookModifyAction implements Action {
     @Override
     public void execute(Scanner sc) throws Exception {
 
-        int book_no = consoleUtil.getBook_number("수정할 ", sc);
+        int book_no = consoleUtil.getBook_no("수정하쉴? ", sc);
         Book modifyBook = bookModifyService.getModifyBook(book_no);
         Book changeBook = consoleUtil.getChangeBook(modifyBook, sc);
 

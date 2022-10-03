@@ -51,8 +51,9 @@ public class ConsoleUtil {
 
         public int getSearchMenuNum(Scanner sc) {
             out.println("책 검색 메뉴-------------");
-            out.println("1. 책 번호로 검색-------------");
-            out.println("2. 작가 이름으로 검색-------------");
+            out.println("1. 책 제목으로 검색-------------");
+            out.println("2. 책 번호로 검색-------------");
+            out.println("3. 책 작가로 검색-------------");
             out.println("선택 > ");
             return sc.nextInt();
         }
@@ -94,10 +95,11 @@ public class ConsoleUtil {
             out.println("변경할 책 정보 입력---");
 
             out.println("수정할 책 제목 입력 : ");
-            String book_name = sc.next();
+            String book_name = sc.nextLine();
+            sc.nextLine();
 
             out.println("수정할 작가 이름 : ");
-            String book_writer = sc.next();
+            String book_writer = sc.nextLine();
 
             return new Book(modifyBook.getBook_no(), book_name, book_writer);
         }

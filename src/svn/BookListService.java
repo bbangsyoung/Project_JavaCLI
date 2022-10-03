@@ -12,8 +12,6 @@ public class BookListService {
         Connection con  = getConnection();
         BookDAO bookDAO = new BookDAO(con);
         ArrayList<Book> bookList = bookDAO.selectBookList();
-//        BookDAO bookmemberDAO = new BookDAO(con);
-//        ArrayList<Book> bookList = bookmemberDAO.selectBooktList();
         close(con);
 
         return bookList;
