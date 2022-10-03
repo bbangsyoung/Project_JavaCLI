@@ -61,17 +61,17 @@ public class ConsoleUtil {
         }
 
     public int getBook_no(String msgKind, Scanner sc) {
-        System.out.print("\n> " + msgKind + "➥ 등록하고자 하는 도서번호 입력 : ");
+        System.out.print("\n> " + msgKind + " 도서번호 입력 : ");
         return sc.nextInt();
     }
 
     public String getBook_name(String msgKind, Scanner sc) {
-        System.out.print("\n> " + msgKind + "➥ 도서제목 입력 : ");
+        System.out.print("\n> " + msgKind + " 도서제목 입력 : ");
         return sc.next();
     }
 
     public String book_writer(String msgKind, Scanner sc) {
-        System.out.print("\n> " + msgKind + "➥ 작가 입력 : ");
+        System.out.print("\n> " + msgKind + " 작가 입력 : ");
         return sc.next();
     }
 

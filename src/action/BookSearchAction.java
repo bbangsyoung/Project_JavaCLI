@@ -17,14 +17,14 @@ public class BookSearchAction implements Action{
         ArrayList<Book> searchBookList = null;
 
         if(searchMenuNum == 1) {
-            String book_name = consoleUtil.getBook_name("검색할",sc);
+            String book_name = consoleUtil.getBook_name("➥",sc);
             searchBookList = bookSerchService.getSearchBookListByBook_name(book_name);
 
         } else if (searchMenuNum == 2) {
-            int book_no = consoleUtil.getBook_no("검색할", sc);
+            int book_no = consoleUtil.getBook_no("➥", sc);
             searchBookList = bookSerchService.getSearchBookListByBook_no(book_no);
         } else if (searchMenuNum == 3) {
-            String book_writer = consoleUtil.book_writer("검색할 ", sc);
+            String book_writer = consoleUtil.book_writer("➥ ", sc);
             searchBookList = bookSerchService.getSearchBookListByBook_writer(book_writer);
         } else if (searchMenuNum == 4) {
             consoleUtil.printSearchBookCancel();
