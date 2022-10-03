@@ -5,6 +5,8 @@ import controller.BookController;
 
 import java.util.Scanner;
 
+import static java.lang.System.out;
+
 public class BookUI {
     public static void main(String[] args) {
         boolean isStop = false;
@@ -20,26 +22,22 @@ public class BookUI {
         BookController bookcontroller = new BookController();
 
         do{
-            System.out.println("도서대여 프로그램");
-            System.out.println("1. 도서관리");
-            System.out.println("2. 회원관리");
-            System.out.println("3. 임시 테스트 메뉴");
-            System.out.println("4. 프로그램 종료");
-            System.out.println("메뉴를 입력하세요 > ");
+
+            out.println("┌───────────────────────────────┐");
+            out.println("         도서대여 관리 시스템       ");
+            out.println("└───────────────────────────────┘");
+            out.println("［ 1 ：도서관리 ］ ［ 2 ：회원관리 ］ ［ 3 ：임시메뉴 ］ ［ 4 ：종료 ］");
+
+            out.print("\n➥ 메뉴 선택 : ");
             outerMenu = sc.nextInt();
             isInnerStop = false;
 
             switch (outerMenu) {
                 case 1: //도서관리
                     do {
-                        System.out.println("도서관리 메뉴");
-                        System.out.println("1. 도서등록");
-                        System.out.println("2. 도서조회");
-                        System.out.println("3. 도서검색");
-                        System.out.println("4. 도서수정");
-                        System.out.println("5. 도서삭제");
-                        System.out.println("6. 첫화면으로");
-                        System.out.println("메뉴 선택 >> ");
+                        out.println("도서관리 메뉴");
+                        out.println("［ 1 ：도서등록 ］ ［ 2 ：도서 전체조회 ］ ［ 3 ：도서검색 ］ ［ 4 ：도서수정 ］ ［ 5 ：도서삭제 ］ ［ 6 ：처음으로 ］");
+                        out.println("\n➥ 메뉴 선택 : ");
                         innerMenu = sc.nextInt();
                         
                         switch (innerMenu) {
@@ -59,20 +57,20 @@ public class BookUI {
                                 action = new BookDeleteAction();
                                 break;
                             case 6:
-                                System.out.println("처음 메뉴로 이동합니다.");
+                                out.println("처음으로 이동합니다.");
                                 isInnerStop = true;
                                 action = null;
                                 break;
 
                             default:
-                                System.out.println("잘못 입력하셨습니다.");
+                                out.println("잘못된 번호입니다.");
                                 action = null;
                                 break;
                         }
 
                         if(action != null) {
                             bookcontroller.requestProcess(action, sc);
-                            System.out.println("넘어가라ㅣ 넘어가");
+                            out.println("이전으로 돌아갑니다.");
                         }
                          } while(!isInnerStop);
                             break;
@@ -80,14 +78,9 @@ public class BookUI {
 
                 case 2: //회원관리
                     do{
-                        System.out.println("회원관리 메뉴 ~~");
-                        System.out.println("1. 회원정보 입력");
-                        System.out.println("2. 회원정보 조회");
-                        System.out.println("3. 회원정보 검색");
-                        System.out.println("4. 회원정보 수정");
-                        System.out.println("5. 회원정보 삭제");
-                        System.out.println("6. 첫화면으로");
-                        System.out.println("메뉴 선택 >> ");
+                        out.println("회원관리 메뉴 ~~");
+                        out.println("［ 1 ：회원등록 ］ ［ 2 ：회원정보조회 ］ ［ 3 ：회원정보검색 ］ ［ 4 ：회원정보수정 ］ ［ 5 ：회원정보삭제 ］ ［ 6 ：처음으로 ］");
+                        out.println("\n➥ 메뉴 선택 : ");
                         innerMenu = sc.nextInt();
 
                         switch (innerMenu) {
@@ -102,12 +95,12 @@ public class BookUI {
                             case 5:
                                 break;
                             case 6:
-                                System.out.println("첫 화면으로 이동합니다.");
+                                out.println("처음으로 이동합니다.");
                                 isInnerStop = true;
                                 action = null;
                                 break;
                             default:
-                                System.out.println("프로그램을 종료합니다.");
+                                out.println("프로그램을 종료합니다.");
                                 break;
                         }
 
@@ -118,16 +111,16 @@ public class BookUI {
                     break;
 
                 case 3:
-                    System.out.println("임시 테스트 메뉴라니깐~");
+                    out.println("임시 테스트 메뉴입니다.");
                     break;
 
                 case 4:
-                    System.out.println("프로그램을 종료합니다!!!!!!!!!");
+                    out.println("프로그램을 종료합니다.");
                     isOutStop = true;
                     break;
 
                 default:
-                    System.out.println("잘못 누르셨습니다요ㅠㅠ");
+                    out.println("잘못된 번호입니다.");
                     break;
             }//switch end
 
