@@ -1,3 +1,4 @@
+/*
 package X_Before_code;
 
 import java.sql.Connection;
@@ -9,7 +10,7 @@ import java.sql.SQLException;
         public static void main(String[] args) {
             String url = "jdbc:mysql://localhost:3306/JDBC";
             String id = "root";
-            String pw = "0000";
+            String pw = "12345";
             Connection conn = null;
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
@@ -35,3 +36,4 @@ import java.sql.SQLException;
 
     }
 
+*/

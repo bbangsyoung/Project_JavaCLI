@@ -5,7 +5,7 @@ import java.sql.*;
 public class JdbcUtil {
     static {
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("org.mariadb.jdbc.Driver");
         } catch(ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -14,7 +14,7 @@ public class JdbcUtil {
     public static Connection getConnection() {
         Connection con = null;
         try {
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/JDBC","root","0000");
+            con = DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/jdbc","root","12345");
             con.setAutoCommit(false);
 
         } catch (Exception e) {
