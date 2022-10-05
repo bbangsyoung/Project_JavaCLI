@@ -1,4 +1,7 @@
 package util;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Scanner;
 import action.Action;
@@ -90,16 +93,17 @@ public class ConsoleUtil {
 
         /*public void printBookNotFound(int book_no) { out.println("해당 도서번호에 해당하는 책이 존재하지 않습니다."); }*/
 
-        public Book getChangeBook(Book modifyBook, Scanner sc) {
+        public Book getChangeBook(Book modifyBook, Scanner sc) throws IOException {
         sc.useDelimiter(System.getProperty("line.separator")); // 행구분문자
             out.println("변경할 책 정보 입력---");
 
+            BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+
             out.println("수정할 책 제목 입력 : ");
-            String book_name = sc.nextLine();
-            sc.nextLine();
+            String book_name = bf.readLine();
 
             out.println("수정할 작가 이름 : ");
-            String book_writer = sc.nextLine();
+            String book_writer = bf.readLine();
 
             return new Book(modifyBook.getBook_no(), book_name, book_writer);
         }

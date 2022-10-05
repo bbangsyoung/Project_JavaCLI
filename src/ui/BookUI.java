@@ -3,12 +3,15 @@ package ui;
 import action.*;
 import controller.BookController;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 
 import static java.lang.System.out;
 
 public class BookUI {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         boolean isStop = false;
 
         Scanner sc = new Scanner(System.in);
@@ -37,9 +40,10 @@ public class BookUI {
                     do {
                         out.println("도서관리 메뉴");
                         out.println("［ 1 ：도서등록 ］ ［ 2 ：도서 전체조회 ］ ［ 3 ：도서검색 ］ ［ 4 ：도서수정 ］ ［ 5 ：도서삭제 ］ ［ 6 ：처음으로 ］");
-                        out.println("\n➥ 메뉴 선택 : ");
+
+                        out.println("\n➥ 도서 메뉴 선택 : ");
                         innerMenu = sc.nextInt();
-                        
+
                         switch (innerMenu) {
                             case 1:
                                 action = new BookAddAction();
