@@ -30,6 +30,4 @@ public class BookDeleteService {
         return isDeleteSuccess;
 
     }
-
-
 }
