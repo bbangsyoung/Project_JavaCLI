@@ -26,9 +26,9 @@ public class BookUI {
 
         do{
 
-            out.println("┌───────────────────────────────┐");
-            out.println("         도서대여 관리 시스템       ");
-            out.println("└───────────────────────────────┘");
+            out.println("───────────────────────────────");
+            out.println("        도서대여 관리 시스템       ");
+            out.println("───────────────────────────────");
             out.println("［ 1 ：도서관리 ］ ［ 2 ：회원관리 ］ ［ 3 ：임시메뉴 ］ ［ 4 ：종료 ］");
 
             out.print("\n➥ 메뉴 선택 : ");
@@ -38,8 +38,7 @@ public class BookUI {
             switch (outerMenu) {
                 case 1: //도서관리
                     do {
-                        out.println("도서관리 메뉴");
-                        out.println("［ 1 ：도서등록 ］ ［ 2 ：도서 전체조회 ］ ［ 3 ：도서검색 ］ ［ 4 ：도서수정 ］ ［ 5 ：도서삭제 ］ ［ 6 ：처음으로 ］");
+                        out.println("［ 1 ：도서등록 ］ ［ 2 ：도서 전체조회 ］ ［ 3 ：도서검색 ］ ［ 4 ：도서수정 ］ ［ 5 ：도서삭제 ］ ［ 6 ：도서대여반납 ］ ［ 6 ：처음으로 ］");
 
                         out.println("\n➥ 도서 메뉴 선택 : ");
                         innerMenu = sc.nextInt();
@@ -61,6 +60,9 @@ public class BookUI {
                                 action = new BookDeleteAction();
                                 break;
                             case 6:
+                                //action = new BookRentalAction();
+                                break;
+                            case 7:
                                 out.println("처음으로 이동합니다.");
                                 isInnerStop = true;
                                 action = null;
@@ -74,7 +76,7 @@ public class BookUI {
 
                         if(action != null) {
                             bookcontroller.requestProcess(action, sc);
-                            out.println("이전으로 돌아갑니다.");
+                            out.println("\n메인으로 돌아갑니다.");
                         }
                          } while(!isInnerStop);
                             break;
@@ -99,7 +101,7 @@ public class BookUI {
                             case 5:
                                 break;
                             case 6:
-                                out.println("처음으로 이동합니다.");
+                                out.println("\n메인으로 돌아갑니다.");
                                 isInnerStop = true;
                                 action = null;
                                 break;

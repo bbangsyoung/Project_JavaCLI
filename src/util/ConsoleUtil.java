@@ -23,7 +23,8 @@ public class ConsoleUtil {
         out.println("──────────────────────────");
 
         out.print("도서 제목 입력 : ");
-        String book_name = sc.next();
+        sc.nextLine();
+        String book_name = sc.nextLine();
         out.print("작가 입력 : ");
         String book_writer = sc.next();
 
@@ -31,6 +32,7 @@ public class ConsoleUtil {
         out.println("해당 도서를 등록하시겠습니까?");
         out.println("［ 1 ：등록 ］ ［ 아무키 ：아니오 ］");
         out.print("\n➥ 메뉴 선택 : ");
+
         return new Book(book_no, book_name, book_writer);
     };
 
@@ -48,9 +50,21 @@ public class ConsoleUtil {
                out.println(bookList.get(i).toString());
             }
 
-        out.println("―――――――――――――――――――――――――――――");
-        out.println("총 " + bookList.size() + "권의 도서가 등록되어있습니다.");
+        out.println("――――――――――――――――――――――");
+        out.println("총 " + bookList.size() + "권의 도서가 등록되어있습니다.\n");
         }
+
+    public void printBookRentalListTest(Book rental) { //단순조회
+
+      if (rental) {
+          out.println("대여불가");
+      } else {
+          out.println("대여가능");
+      }
+
+    }
+
+
 
         public void printBookListNotFound() {
             out.println("해당 도서번호는 존재하지 않습니다.");
@@ -94,16 +108,18 @@ public class ConsoleUtil {
         /*public void printBookNotFound(int book_no) { out.println("해당 도서번호에 해당하는 책이 존재하지 않습니다."); }*/
 
         public Book getChangeBook(Book modifyBook, Scanner sc) throws IOException {
-        sc.useDelimiter(System.getProperty("line.separator")); // 행구분문자
-            out.println("변경할 책 정보 입력---");
+        //sc.useDelimiter(System.getProperty("line.separator")); // 행구분문자
+            out.println("변경할 책 정보 입력을 시작합니다. \n");
 
-            BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+            //BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
 
             out.println("수정할 책 제목 입력 : ");
-            String book_name = bf.readLine();
+            sc.nextLine();
+            String book_name = sc.nextLine();
+
 
             out.println("수정할 작가 이름 : ");
-            String book_writer = bf.readLine();
+            String book_writer = sc.next();
 
             return new Book(modifyBook.getBook_no(), book_name, book_writer);
         }
@@ -120,6 +136,23 @@ public class ConsoleUtil {
 
     public void printDeleteFail(int book_no){
         out.println(book_no + "번 책의 정보삭제가 실패하였습니다.");
+    }
+
+
+    public void printRentalPossible(int book_no) {
+        out.println(book_no + "번 책은 현재 대여가능합니다. 대여하시겠습니까?");
+    }
+
+    public void printRentalImpossible(int book_no) {
+        out.println(book_no + "번 책은 현재 반납가능합니다. 반납하시겠습니까?");
+    }
+    
+    public void printRentalSuccess(int book_no) {
+        out.println(book_no + "번 책이 대여불가로 변경되었습니다.");
+    }
+
+    public void printRentalFail(int book_no) {
+        out.println(book_no + "번 책이 대여가능으로 변경되었습니다.");
     }
 
 
