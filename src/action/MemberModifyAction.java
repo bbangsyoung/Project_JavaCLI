@@ -1,10 +1,7 @@
 package action;
-
 import svn.MemberModifyService;
 import util.ConsoleUtil;
-import vo.Book;
 import vo.Member;
-
 import java.util.Scanner;
 
 public class MemberModifyAction implements Action {
