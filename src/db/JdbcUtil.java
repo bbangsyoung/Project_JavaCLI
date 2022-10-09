@@ -1,5 +1,6 @@
 package db;
 
+import java.security.spec.RSAOtherPrimeInfo;
 import java.sql.*;
 
 public class JdbcUtil {
@@ -16,6 +17,7 @@ public class JdbcUtil {
         try {
             con = DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/jdbc","root","12345");
             con.setAutoCommit(false);
+            //System.out.println("로드완료/DB연결성공");
 
         } catch (Exception e) {
             e.printStackTrace();
