@@ -100,28 +100,39 @@ public class BookDAO {
         return book;
     }
 
-    public Book selectBookRental(int book_no) {
-        Book book = null;
+    public ArrayList<Book> selectBook_rental(int book_no) {
+        ArrayList<Book> searchBookList = null;
+        Book searchBook = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
-        String sql = "SELECT * FROM book where book_no = ?";
+        String sql = "SELECT * FROM book WHERE book_no like concat(?, '%')";
 
-        try{
+        try {
             pstmt = con.prepareStatement(sql);
             pstmt.setInt(1, book_no);
             rs = pstmt.executeQuery();
 
-            if(rs.next()) {
-                book = new Book(rs.getBoolean("book_rental"));
-            }
+            if (rs.next()) {
+                searchBookList = new ArrayList<Book>();
 
+                do {
+                    searchBook = new Book(
+                            rs.getInt("book_no"),
+                            rs.getString("book_name"),
+                            rs.getString("book_writer"),
+                            rs.getBoolean("book_rental")
+                    );
+                    searchBookList.add(searchBook);
+
+                } while (rs.next());
+            }
         } catch (Exception e) {
             e.printStackTrace();
-        } finally{
+        } finally {
             close(rs);
             close(pstmt);
         }
-        return book;
+        return searchBookList;
     }
 
 
@@ -318,17 +329,16 @@ public int deleteBook(int book_no) {
     }
 
 
-    public int updateBookReantal(Book changeBook) throws Exception{
+    public int updateBook_Rental(Book changeBook) throws Exception{
 
         int updateCount = 0;
         PreparedStatement pstmt = null;
-        String sql = "UPDATE book SET book_name=?, book_writer=? WHERE book_no=?;";
+        String sql = "UPDATE book SET book_rental=? WHERE book_no=?;";
 
         try{
             pstmt = con.prepareStatement(sql);
-            pstmt.setString(1, changeBook.getBook_name());
-            pstmt.setString(2, changeBook.getBook_writer());
-            pstmt.setInt(3, changeBook.getBook_no());
+            pstmt.setBoolean(1, changeBook.book_rental);
+            pstmt.setInt(2, changeBook.getBook_no());
 
             updateCount = pstmt.executeUpdate();
         }

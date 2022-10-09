@@ -75,11 +75,11 @@ public class Book {
     }
 
     public String toString() {
-        return " No." + book_no + "  " + book_name + "  " + book_writer;
+        return " No." + book_no + "  " + book_name + "  " + book_writer + " " + toString_rental();
     }
     public String toString_rental() {
-        if(book_rental) return "대여불가";
-        else return  "대여가능";
+        if(book_rental) return "[ 대여불가 ]";
+        else return  "[ 대여가능 ]";
     }
 
     public boolean book_rental(Book rentalBook) {
