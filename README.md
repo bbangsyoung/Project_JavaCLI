@@ -1,13 +1,21 @@
-## 도서관리 프로그램 JAVA PROJECT CLI <img src="https://img.shields.io/badge/Java-007396?style=flat-square&logo=Java&logoColor=white"> <img src="https://img.shields.io/badge/MariaDB-1F305F?style=flat-square&logo=MariaDB&logoColor=white"> <img src="https://img.shields.io/badge/IntelliJ IDEA-2F8CBB?style=flat-square&logo=IntelliJ IDEA&logoColor=white"> 
+# 도서관리 프로그램 JAVA PROJECT CLI <img src="https://img.shields.io/badge/Java-007396?style=flat-square&logo=Java&logoColor=white"> <img src="https://img.shields.io/badge/MariaDB-1F305F?style=flat-square&logo=MariaDB&logoColor=white"> <img src="https://img.shields.io/badge/IntelliJ IDEA-2F8CBB?style=flat-square&logo=IntelliJ IDEA&logoColor=white"> 
 
-💡 `JAVA`와 `JDBC`(MariaDB)를 이용하여 만든 **JAVA CLI 도서대여 프로그램**
 
-- JDBC 연동 학습을 위해서 제작하였습니다.
-- 2
-- 구동 예시
-<img src="http://hohk.dothome.co.kr/load/data/kt151209_2/166532970428827808.gif">  
+{: .notice}
 
-<img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white">
+💡 `#JAVA`와 `#JDBC`(MariaDB)를 이용하여 만든 **JAVA CLI 도서대여 프로그램**  
+<br>
+
+## 🖥 프로젝트 소개
+- 개발기간 <img src="https://img.shields.io/badge/22/09/24 ~ 22/10/8-ffce66?style=flat&logo=java&logoColor=white">
+- 학습한 내용을 토대로 MVC패턴을 적용하여 객체지향적으로 클래스의 관계를 보다 깊이 알고싶다는 목적하에 제작되었습니다.
+- **오라클DB → MySQL → MariaDB** 를 순서대로 연동 및 적용해보며, 가장 많이 사용되는 3가지의 DB를 직접 다뤄보았습니다.  
+
+
+##### ➥　구동 예시  
+　　<img src="http://hohk.dothome.co.kr/load/data/kt151209_2/166532970428827808.gif">
+
+
 <br>
 
 ## 📝 요구사항 정의  
@@ -27,7 +35,7 @@
 
 <br>
 
-<b>2. 회원관리<img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"></b>
+<b>2. 회원관리</b>
 - 도서와 마찬가지로 ***신규회원 등록, 수정, 삭제***가 가능해야만 한다.
 - 회원등록 시 필수 정보는 이름과 연락처로 지정한다.
 
@@ -39,13 +47,11 @@
 |회원정보수정|등록된 회원의 정보를 수정한다.
 |회원삭제| 탈퇴를 원하는 고객의 정보를 삭제한다.
 
-<img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
-
 <br>
 
-## 📌 다이어그램(Diagrram)
+## 📌 다이어그램(Diagrram) <img src="https://img.shields.io/badge/new-ffce66?style=flat&logo=java&logoColor=white">
 <details>
-<summary>유스케이스(Use-case)</summary> 
+  <summary>유스케이스(Use-case)</summary> 
 <img src="http://hohk.dothome.co.kr/load/data/kt151209_2/166532153254956512.png">
 </details>
 <details>
@@ -62,8 +68,6 @@
 </details>  
 
 <br>
-<img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white"> 
-<img src="https://img.shields.io/badge/Java-007396?style=flat-square&logo=Java&logoColor=white">
 
 
 ## ⚠️ 개선사항 및 향후 수정 방향
