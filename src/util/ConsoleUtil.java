@@ -1,13 +1,11 @@
 package util;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Scanner;
-import action.Action;
-import action.BookAddAction;
-import ui.BookUI;
+
 import vo.Book;
+import vo.Member;
+
 import static java.lang.System.out;
 
 public class ConsoleUtil {
@@ -36,15 +34,51 @@ public class ConsoleUtil {
         return new Book(book_no, book_name, book_writer);
     };
 
+    public Member getNewMember(int member_no, Scanner sc) { //도서등록
+        boolean loof = true;
+        String member_name;
+        String member_phone;
+        do {
+            out.println("──────────────────────────");
+            out.println("새로운 회원등록을 시작합니다.");
+            out.println("등록하고자 입력한 회원번호 : " +member_no);
+
+            out.print("회원이름 입력 : ");
+            sc.nextLine();
+            member_name = sc.nextLine();
+            out.print("연락처 입력 : ");
+            member_phone = sc.next();
+
+            out.println(member_no + member_name + member_phone);
+            out.println("해당 회원을 등록하시겠습니까?");
+            out.println("［ 1 ：등록 ］ ［ 아무키 ：아니오 ］");
+            out.print("\n➥ 메뉴 선택 : ");
+            int selectNo = sc.nextInt();
+            if (selectNo == 1) loof = false;
+        } while (loof);
+
+        return new Member(member_no, member_name, member_phone);
+    };
+
+
     public void printRegistSucess(Book newBook) {
         out.println("새로운 도서가 등록되었습니다.");
+    }
+
+    public void printRegistSucess(Member newMember) {
+        out.println("새로운 회원이 등록되었습니다.");
     }
 
     public void printRegistFail(Book newBook) {
         out.println("도서 등록을 실패하였습니다");
     }
 
+    public void printRegistFail(Member newMember) {
+        out.println("회원등록을 실패하였습니다");
+    }
+
     public void printBookList(ArrayList<Book> bookList) {
+
 
             for (int i = 0; i < bookList.size(); i++) {
                out.println(bookList.get(i).toString());
@@ -54,15 +88,14 @@ public class ConsoleUtil {
         out.println("총 " + bookList.size() + "권의 도서가 등록되어있습니다.\n");
         }
 
-    public void printBookRentalListTest(Book rental) { //단순조회
+        public void printBookList_rental(ArrayList<Book> bookList) {
 
-      if (rental) {
-          out.println("대여불가");
-      } else {
-          out.println("대여가능");
-      }
-
-    }
+            out.println("대여할 리스트 확인리스트");
+            for (int i = 0; i < bookList.size(); i++) {
+                out.print(bookList.get(i).toString() + "  ");
+                out.println(bookList.get(i).toString_rental());
+            }
+        }
 
 
 
@@ -77,6 +110,13 @@ public class ConsoleUtil {
             return sc.nextInt();
         }
 
+    public int getSearchMenuNum_member(Scanner sc) {
+        out.println("책 검색 메뉴-------------");
+        out.println("［ 1 ：회원이름으로 검색 ］ ［ 2 ：회원번호로 검색 ］");
+        out.println("\n➥ 메뉴 선택 : ");
+        return sc.nextInt();
+    }
+
     public int getBook_no(String msgKind, Scanner sc) {
         System.out.print("\n> " + msgKind + " 도서번호 입력 : ");
         return sc.nextInt();
@@ -84,6 +124,11 @@ public class ConsoleUtil {
 
     public String getBook_name(String msgKind, Scanner sc) {
         System.out.print("\n> " + msgKind + " 도서제목 입력 : ");
+        return sc.next();
+    }
+
+    public String getMember_name(String msgKind, Scanner sc) {
+        System.out.print("\n> " + msgKind + " 회원이름 입력 : ");
         return sc.next();
     }
 
@@ -97,6 +142,10 @@ public class ConsoleUtil {
             out.println("책 관리 화면으로 이동합니다.");
         }
 
+        public void printSearchMemberCancel() {
+            out.println("회원관리 화면으로 이동합니다.");
+        }
+
         public void printSearchMenuWrong() {
             out.println("잘못 선택했습니다");
         }
@@ -105,13 +154,17 @@ public class ConsoleUtil {
             out.println("검색 조건에 해당하는 책이 존재하지 않습니다.");
         }
 
+        public void printSearchMemberListNotFound() {
+            out.println("검색 조건에 해당하는 회원이 없습니다.");
+        }
+
         /*public void printBookNotFound(int book_no) { out.println("해당 도서번호에 해당하는 책이 존재하지 않습니다."); }*/
 
         public Book getChangeBook(Book modifyBook, Scanner sc) throws IOException {
+
         //sc.useDelimiter(System.getProperty("line.separator")); // 행구분문자
             out.println("변경할 책 정보 입력을 시작합니다. \n");
 
-            //BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
 
             out.println("수정할 책 제목 입력 : ");
             sc.nextLine();
@@ -124,7 +177,60 @@ public class ConsoleUtil {
             return new Book(modifyBook.getBook_no(), book_name, book_writer);
         }
 
-        public void printModifySuccess(int book_no){
+
+    public Book getChangeBook_rental(Book modifyBook, Scanner sc) throws IOException {
+
+        //sc.useDelimiter(System.getProperty("line.separator")); // 행구분문자
+        out.println("상태 변경 시작 \n");
+
+
+        out.println("대여/반납 상태를 변경하시려면 1, 아니면 아무키");
+        int selectNo = sc.nextInt();
+        boolean book_rental = false;
+        if(selectNo == 1) book_rental = !book_rental;
+
+        return new Book(modifyBook.getBook_no(), book_rental);
+    }
+
+
+
+    public Member getChangeMember(Member modifyMember, Scanner sc) throws IOException {
+
+        out.println("변경할 회원정보 입력을 시작합니다. \n");
+
+
+        out.println("수정할 회원이름 입력 : ");
+        sc.nextLine();
+        String member_name = sc.nextLine();
+
+
+        out.println("수정할 연락처 입력 : ");
+        String member_phone = sc.next();
+
+        return new Member(modifyMember.getMember_no(), member_name, member_phone);
+    }
+
+    public Member getChangeMember_rental(Member modifyMember, Scanner sc) throws IOException {
+
+        out.println("변경할 회원정보 입력을 시작합니다. \n");
+
+
+        out.println("수정할 회원이름 입력 : ");
+        sc.nextLine();
+        String member_name = sc.nextLine();
+
+
+        out.println("수정할 연락처 입력 : ");
+        String member_phone = sc.next();
+
+        return new Member(modifyMember.getMember_no(), member_name, member_phone);
+    }
+
+
+
+
+
+    public void printModifySuccess(int book_no){
             out.println(book_no + "번 책이 수정되었습니다.");
         }
 
@@ -156,28 +262,28 @@ public class ConsoleUtil {
     }
 
 
+    public void printMemberList(ArrayList<Member> memberList) {
 
+        out.println("――――――――――――――――――――――");
+        out.println("회원번호    이름    연락처    대여 중인 책");
+        out.println("――――――――――――――――――――――");
 
+        for (int i = 0; i < memberList.size(); i++) {
+            out.println(memberList.get(i).toString());
+        }
 
+        out.println("――――――――――――――――――――――");
+        out.println("총 " + memberList.size() + "명의 회원이 등록되어있습니다.\n");
+    }
 
+    public void printMemberListNotFound() {
+        out.println("해당 회원은 존재하지 않습니다.");
+    }
 
-
-
-        
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
+    public int getMember_no(String msgKind, Scanner sc) {
+        System.out.print("\n> " + msgKind + " 등록하고자하는 회원번호 입력 : ");
+        return sc.nextInt();
+    }
 
 
 }//class end

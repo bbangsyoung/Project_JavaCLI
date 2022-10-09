@@ -5,7 +5,7 @@ public class Book {
     private int book_no;
     private String book_name;
     private String book_writer;
-    //private boolean status;
+    private boolean book_status;
     //private String rentalMember; //해당 책 대여중인 고객이름
 
 
@@ -24,9 +24,23 @@ public class Book {
         this.book_name = book_name;
         this.book_writer = book_writer;
         this.book_rental = book_rental;
-
     }
 
+    public Book(int book_no, boolean book_rental) {
+        this.book_no = book_no;
+        this.book_rental = book_rental;
+    }
+    public Book(boolean book_rental) {
+        this.book_rental = book_rental;
+    }
+
+    public boolean isBook_status() {
+        return book_status;
+    }
+
+    public void setBook_status(boolean book_status) {
+        this.book_status = book_status;
+    }
 
     public int getBook_no() {
         return book_no;
@@ -63,8 +77,12 @@ public class Book {
     public String toString() {
         return " No." + book_no + "  " + book_name + "  " + book_writer;
     }
+    public String toString_rental() {
+        if(book_rental) return "대여불가";
+        else return  "대여가능";
+    }
 
-    public boolean book_rental() {
+    public boolean book_rental(Book rentalBook) {
         return book_rental;
     }
 }
