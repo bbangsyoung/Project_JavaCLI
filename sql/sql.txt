@@ -1,0 +1,46 @@
+CREATE DATABASE JDBC;
+USE JDBC;
+
+create table Book(
+    book_no int Not null,
+    book_name varchar(20) Not null,
+    book_writer varchar(20) Not null,
+    book_rental boolean,
+    primary key (book_no)
+);
+
+ALTER TABLE book convert to charset utf8;
+
+insert into book value (1, '사내 스토킹을 금지합니다', '김효의', false);
+insert into book value (2, '제프리 맥밀런씨의 고민', '김유쓰',false);
+insert into book value (3, '이그레트', '진심',false);
+insert into book value (4, '바다새와 늑대', '왕모닝',false);
+insert into book value (5, '위대한 소원', '나래',false);
+insert into book value (6, '넣어보시죠', '책', false);
+insert into book value (7, '그림책', '책', false);
+
+
+
+create table Member(
+                       member_no int Not null,
+                       member_name varchar(20) Not null,
+                       member_phone varchar(20),
+                       book_rental_list varchar(40)
+);
+
+ALTER TABLE member convert to charset utf8;
+
+insert into member (member_no, member_name, member_phone, book_rental_list)
+values (100, '유저1', '01012312441', '');
+insert into member (member_no, member_name, member_phone, book_rental_list)
+values (200, '유저2', '01012312441', '');
+insert into member (member_no, member_name, member_phone, book_rental_list)
+values (300, '유저3', '01012312441', '');
+insert into member (member_no, member_name, member_phone, book_rental_list)
+values (400, '유저4', '01012312441', '');
+insert into member (member_no, member_name, member_phone, book_rental_list)
+values (500, '유저5', '01012312441', '');
+
+
+select * from book;
+select * from member;
