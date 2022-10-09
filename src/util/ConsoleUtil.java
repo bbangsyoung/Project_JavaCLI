@@ -92,9 +92,9 @@ public class ConsoleUtil {
 
             out.println("대여할 리스트 확인리스트");
             for (int i = 0; i < bookList.size(); i++) {
-                out.print(bookList.get(i).toString() + "  ");
-                out.println(bookList.get(i).toString_rental());
+                out.print(bookList.get(i).getBook_name() + "은 현재 " + bookList.get(i).toString_rental() + "입니다.");
             }
+
         }
 
 
@@ -189,6 +189,7 @@ public class ConsoleUtil {
         boolean book_rental = false;
         if(selectNo == 1) book_rental = !book_rental;
 
+
         return new Book(modifyBook.getBook_no(), book_rental);
     }
 
@@ -209,26 +210,6 @@ public class ConsoleUtil {
 
         return new Member(modifyMember.getMember_no(), member_name, member_phone);
     }
-
-    public Member getChangeMember_rental(Member modifyMember, Scanner sc) throws IOException {
-
-        out.println("변경할 회원정보 입력을 시작합니다. \n");
-
-
-        out.println("수정할 회원이름 입력 : ");
-        sc.nextLine();
-        String member_name = sc.nextLine();
-
-
-        out.println("수정할 연락처 입력 : ");
-        String member_phone = sc.next();
-
-        return new Member(modifyMember.getMember_no(), member_name, member_phone);
-    }
-
-
-
-
 
     public void printModifySuccess(int book_no){
             out.println(book_no + "번 책이 수정되었습니다.");
