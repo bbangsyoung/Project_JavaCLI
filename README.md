@@ -58,7 +58,7 @@
 </details>
 <details>
 <summary>ERD 다이어그램(Entity Relationship Diagram)</summary>
-<img src="http://hohk.dothome.co.kr/load/data/kt151209_2/166532153254956512.png">
+준비중입니다
 </details>
 <details>
 <summary>시퀀스 다이어그램(Sequence Diagram)</summary>
