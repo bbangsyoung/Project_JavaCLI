@@ -23,24 +23,21 @@ public class RentalSerchSearvice {
         return searchBookList;
     }
 
-
-    //수정용으로 가져옴
-    public Member getModifyMember(int member_no) {
+    public static Book getModifyBook_rental(int book_no_rental) {
         Connection con = getConnection();
-        MemberDAO memberDAO = new MemberDAO(con);
-        Member modifyMember = memberDAO.selectMember(member_no);
+        BookDAO bookDAO = new BookDAO(con);
+        Book modifyBook = bookDAO.selectBook(book_no_rental);
         close(con);
-        return modifyMember;
+        return modifyBook;
     }
 
-
-    public boolean modifyMember_rental(Member changeMember) throws Exception {
+    public static boolean modifyBook_rental(Book changeBook) throws Exception {
 
         boolean isModifySuccess = false;
         Connection con = getConnection();
-        MemberDAO memberDAO = new MemberDAO(con);
+        BookDAO bookDAO = new BookDAO(con);
 
-        int upDateCount = memberDAO.updateMember(changeMember);
+        int upDateCount = bookDAO.updateBook_Rental(changeBook);
 
         if(upDateCount > 0) {
             isModifySuccess = true;
@@ -55,6 +52,13 @@ public class RentalSerchSearvice {
 
 
     }
+
+
+
+
+
+
+
 
 
 
