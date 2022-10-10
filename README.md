@@ -58,7 +58,7 @@
 </details>
 <details>
 <summary>ERD 다이어그램(Entity Relationship Diagram)</summary>
-준비중입니다
+준비중입니다.
 </details>
 <details>
 <summary>시퀀스 다이어그램(Sequence Diagram)</summary>
